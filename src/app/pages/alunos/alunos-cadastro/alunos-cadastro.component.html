@@ -1,56 +1,114 @@
+<p-toast></p-toast>
+
 <p-card header="Cadastro de Aluno">
   <div class="grid mb-4">
     <div class="col-12 text-left">
       <button
-        pButton
-        type="button"
-        class="p-button p-button-raised p-button-primary"
-        icon="pi pi-caret-left"
-        pTooltip="Voltar"
-        tooltipPosition="top"
-        label="Voltar"
-        routerLink="/alunos"
-      ></button>
+  pButton
+  type="button"
+  class="p-button-text"
+  icon="pi pi-arrow-left"
+  label="Voltar"
+  pTooltip="Voltar para a lista"
+  tooltipPosition="top"
+  routerLink="/alunos"
+></button>
     </div>
   </div>
 
-  <form #form="ngForm" autocomplete="off" (ngSubmit)="cadastrar()">
-    <div class="grid">
-      <span class="col-12 mb-2">Nome Completo</span>
-      <div class="col-12 md:col-6 lg:col-4">
+  <form
+    #form="ngForm"
+    autocomplete="off"
+    (ngSubmit)="cadastrar()"
+    class="p-fluid"
+  >
+    <div class="grid formgrid" formLayout="vertical">
+
+      <!-- Nome -->
+      <div class="field col-12 md:col-6 lg:col-4">
+        <label for="nome">Nome Completo*</label>
         <input
+          id="nome"
           pInputText
           name="nome"
           [(ngModel)]="aluno.nome"
           required
-          type="text"
+          maxlength="100"
+          autocomplete="name"
+          placeholder="Digite o nome completo"
+          [ngClass]="{ 'ng-invalid ng-dirty': form.submitted && !aluno.nome }"
         />
       </div>
 
-      <span class="col-12 mb-2 mt-3">Idade</span>
-      <div class="col-12 md:col-3 lg:col-2">
+      <!-- Idade -->
+      <div class="field col-12 md:col-3 lg:col-2">
+        <label for="idade">Idade*</label>
         <input
+          id="idade"
           pInputText
           name="idade"
+          type="number"
+          min="0"
           [(ngModel)]="aluno.idade"
           required
-          type="number"
+          placeholder="Ex: 21"
+          [ngClass]="{ 'ng-invalid ng-dirty': form.submitted && !aluno.idade }"
         />
       </div>
 
-      <span class="col-12 mb-2 mt-3">Curso</span>
-      <div class="col-12 md:col-6 lg:col-4">
+      <!-- Curso -->
+      <div class="field col-12 md:col-6 lg:col-4">
+        <label for="curso">Curso*</label>
         <input
+          id="curso"
           pInputText
           name="curso"
           [(ngModel)]="aluno.curso"
           required
-          type="text"
+          maxlength="50"
+          autocomplete="organization"
+          placeholder="Ex: Engenharia"
+          [ngClass]="{ 'ng-invalid ng-dirty': form.submitted && !aluno.curso }"
         />
       </div>
 
-      <div class="col-12 mt-4">
-        <button pButton type="submit" label="Salvar"></button>
+      <!-- Email (opcional) -->
+      <div class="field col-12 md:col-6 lg:col-4">
+        <label for="email">E-mail</label>
+        <input
+          id="email"
+          pInputText
+          name="email"
+          [(ngModel)]="aluno.email"
+          type="email"
+          placeholder="exemplo@email.com"
+          autocomplete="email"
+        />
+      </div>
+
+      <!-- Telefone (opcional) -->
+      <div class="field col-12 md:col-4 lg:col-3">
+        <label for="telefone">Telefone</label>
+        <input
+          id="telefone"
+          pInputText
+          name="telefone"
+          [(ngModel)]="aluno.telefone"
+          type="tel"
+          placeholder="(99) 99999-9999"
+          autocomplete="tel"
+        />
+      </div>
+
+      <!-- Botão de Salvar -->
+      <div class="col-12 mt-4 text-left">
+        <button
+          pButton
+          type="submit"
+          label="Salvar"
+          icon="pi pi-save"
+          class="p-button-success"
+        ></button>
       </div>
     </div>
   </form>

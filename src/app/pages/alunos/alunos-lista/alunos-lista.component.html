@@ -1,33 +1,33 @@
-<p-card header="Lista de Alunos">
-  <div class="mb-3 flex justify-content-between">
-    <h2 class="m-0">Alunos</h2>
-    <button
-      pButton
-      icon="pi pi-plus"
-      label="Novo Aluno"
-      class="p-button-success"
-      (click)="abrirDialog()"
-    ></button>
-  </div>
-
-  <!-- Tabela -->
-  <p-table [value]="alunos">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Nome</th>
-        <th>Idade</th>
-        <th>Curso</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-aluno>
-      <tr>
-        <td>{{ aluno.nome }}</td>
-        <td>{{ aluno.idade }}</td>
-        <td>{{ aluno.curso }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
-</p-card>
+  <p-card header="Lista de Alunos">
+    <div class="mb-3 flex justify-content-between">
+      <h2 class="m-0">Alunos</h2>
+      <button
+        pButton
+        icon="pi pi-plus"
+        label="Novo Aluno"
+        class="p-button-success"
+        [routerLink]="['/alunos/cadastro']"
+      ></button>
+    </div>
+  
+    <!-- Tabela -->
+    <p-table [value]="alunos">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Curso</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-aluno>
+        <tr>
+          <td>{{ aluno.nome }}</td>
+          <td>{{ aluno.idade }}</td>
+          <td>{{ aluno.curso }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
 
 <p-dialog
   header="Novo Aluno"

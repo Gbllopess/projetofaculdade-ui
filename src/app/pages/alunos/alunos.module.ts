@@ -7,6 +7,8 @@ import { AlunosListaComponent } from './alunos-lista/alunos-lista.component';
 import { AlunosCadastroComponent } from './alunos-cadastro/alunos-cadastro.component';
 import { PrimengModule } from 'src/app/primeng.module';
 
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,12 @@ import { PrimengModule } from 'src/app/primeng.module';
     CommonModule,
     FormsModule,
     AlunosRoutingModule,
-    PrimengModule
-  ]
+    PrimengModule,
+    ToastModule // ⬅️ necessário para usar <p-toast>
+  ],
+  providers: [MessageService] // ⬅️ necessário para mostrar mensagens
 })
-export class AlunosModule {}
+export class AlunosModule {
+  
+}
+
